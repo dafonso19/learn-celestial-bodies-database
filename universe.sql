@@ -51,7 +51,7 @@ CREATE TABLE public.galaxy (
     galaxy_id integer NOT NULL,
     name character varying(100) NOT NULL,
     description text,
-    galaxy_type_id integer,
+    galaxy_types_id integer,
     distance_from_earth numeric(10,2)
 );
 
@@ -162,7 +162,7 @@ CREATE TABLE public.planet (
     description text,
     has_life boolean DEFAULT false,
     is_spherical boolean DEFAULT true,
-    planet_type_id integer,
+    planet_types_id integer,
     age_in_millions_of_years integer,
     star_id integer,
     number_of_moons integer DEFAULT 0
@@ -536,7 +536,7 @@ ALTER TABLE ONLY public.star
 --
 
 ALTER TABLE ONLY public.planet
-    ADD CONSTRAINT fk_planet_type FOREIGN KEY (planet_type_id) REFERENCES public.planet_types(planet_types_id);
+    ADD CONSTRAINT fk_planet_type FOREIGN KEY (planet_types_id) REFERENCES public.planet_types(planet_types_id);
 
 
 --
@@ -552,7 +552,7 @@ ALTER TABLE ONLY public.star
 --
 
 ALTER TABLE ONLY public.galaxy
-    ADD CONSTRAINT galaxy_galaxy_type_id_fkey FOREIGN KEY (galaxy_type_id) REFERENCES public.galaxy_types(galaxy_types_id);
+    ADD CONSTRAINT galaxy_galaxy_type_id_fkey FOREIGN KEY (galaxy_types_id) REFERENCES public.galaxy_types(galaxy_types_id);
 
 
 --
